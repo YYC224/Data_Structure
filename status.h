@@ -1,3 +1,6 @@
+#ifndef STATUS_H
+#define STATUS_H
+
 //function return Status Code
 # define TRUE 1
 # define FALSE 0
@@ -12,3 +15,5 @@ typedef int Status;
 
 //choose int as the element type
 typedef int Elemtype;
+
+#endif
