@@ -16,6 +16,7 @@ Status InitList_Sq(Sqlist *pL);
 Status ListInsert_Sq(Sqlist *pL, int i, Elemtype e);
 Status ListDelete_Sq(Sqlist *pL, int i, Elemtype *e);
 Status ListMerge_Sq(Sqlist La, Sqlist Lb, Sqlist *p_Lc);
+Status LocateElem(Sqlist L, Elemtype e, int *p_location);
 
 int main(void)
 {
@@ -86,6 +87,11 @@ int main(void)
         printf("%d ", Lc.elem[i]);
     }
     printf("\n");
+
+    //test LocateElem()
+    int position = 0, *p_position = &position;
+    LocateElem(Lc, 4, p_position);
+    printf("position = %d", position);
     return 0;
 }
 
@@ -167,4 +173,17 @@ Status ListMerge_Sq(Sqlist La, Sqlist Lb, Sqlist *p_Lc)
         pb++;
     }
     return (OK);
+}
+
+Status LocateElem(Sqlist L, Elemtype e, int *p_location)
+{
+    for (int i=0; i<L.length;i++)
+    {
+        if(L.elem[i]==e)
+        {
+            *p_location = i+1;
+            return (OK);
+        }
+    }
+    return (ERROR);
 }
